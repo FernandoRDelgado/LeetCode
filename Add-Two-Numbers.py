@@ -12,17 +12,17 @@
 12        head = ListNode((l1.val + l2.val) % 10)
 13        result = head
 14        
-15        if l1 != None and l2 != None and l1.val + l2.val > 9:
+15        if l1 and l2 and l1.val + l2.val > 9:
 16            carry = 1
 17
 18        l1 = l1.next
 19        l2 = l2.next
 20        
-21        while ((l1 != None or l2 != None) or carry == 1):
-22            if l1 != None:
+21        while l1 or l2 or carry:
+22            if l1:
 23                summation += l1.val
 24                l1 = l1.next
-25            if l2 != None:
+25            if l2:
 26                summation += l2.val
 27                l2 = l2.next
 28            summation = summation + carry
