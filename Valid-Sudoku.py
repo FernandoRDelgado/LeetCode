@@ -27,8 +27,8 @@
 27                        return False
 28                vertical = defaultdict(int)
 29
-30        for k in range(0, 8, 3):
-31            for l in range(0, 8, 3):
+30        for k in range(0, 9, 3):
+31            for l in range(0, 9, 3):
 32                for i in range(3):
 33                    for j in range(3):
 34                        if board[i + k][j + l] == ".":
