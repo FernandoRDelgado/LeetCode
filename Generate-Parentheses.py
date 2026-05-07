@@ -2,32 +2,24 @@
 2    def generateParenthesis(self, n: int) -> List[str]:
 3        output = []
 4
-5        def isValid(string):
-6            opened = 0
-7            if len(string) == 0:
-8                return True
-9            if string[0] == ")":
-10                return False
-11            for char in string:
-12                if char == "(":
-13                    opened += 1
-14                else:
-15                    opened -= 1
-16                if opened < 0:
-17                    return False
-18            return opened == 0
+5        def backtracking(current_string, opened_count, closed_count):
+6            if len(current_string) == 2 * n:
+7                output.append(current_string)
+8                return
+9            
+10            if opened_count < n:
+11                current_string += "("
+12                backtracking(current_string, opened_count + 1, closed_count)
+13                current_string = current_string[:-1]
+14            
+15            if closed_count < opened_count:
+16                current_string += ")"
+17                backtracking(current_string, opened_count, closed_count + 1)
+18                current_string = current_string[:-1]
 19        
-20        q = deque([""])
-21        while q:
-22            current_string = q.popleft()
-23            if len(current_string) == 2 * n:
-24                if isValid(current_string):
-25                    output.append(current_string)
-26                continue
-27            q.append(current_string + ")")
-28            q.append(current_string + "(")
-29        
-30        return output
-31
-32            
-33
+20        backtracking("", 0, 0)
+21        
+22        return output
+23
+24            
+25
