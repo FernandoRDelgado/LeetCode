@@ -21,5 +21,3 @@
 21        
 22        return output
 23
-24            
-25
