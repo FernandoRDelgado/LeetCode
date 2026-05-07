@@ -4,10 +4,10 @@
 4        next_biggest = defaultdict(int)
 5        for i in range(len(temperatures)):
 6            for j in range(i + 1, len(temperatures)):
-7                if next_biggest[temperatures[i]] > i:
-8                    answer[i] = next_biggest[temperatures[i]] - i
-9                    break
-10                if next_biggest[temperatures[i]] == -math.inf:
+7                if next_biggest[temperatures[i]] == -math.inf:
+8                    break
+9                if next_biggest[temperatures[i]] > i:
+10                    answer[i] = next_biggest[temperatures[i]] - i
 11                    break
 12                if temperatures[i] < temperatures[j]:
 13                    answer[i] = j - i
